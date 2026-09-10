@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "source_sha256": "913d8c7cd8bf9096000b81c02acc8d0d7d49440a2cd486c6e1b8a74d18412f21",
+  "output_sha256": "b7f49cabfb99b81f61b0907bf563f5db0d095c8bbc19a2378729239fac6d628c",
+  "delta_sha256": "b250292f4ee908d48564f96abe0f009718faf417ad5e9e94dca664342f28ce13",
+  "disk_bytes": 901120,
+  "features": [
+    "cpu060",
+    "fast_data",
+    "terrain_delta",
+    "terrain_div",
+    "terrain_project",
+    "span_fill",
+    "trapezoid_fill",
+    "view_9",
+    "custom_intro"
+  ],
+  "sources": {
+    "src/cpu060.s": "99fffe93a4e714c10c4ea39c1cc8528bbad8d7e8dd6aa4938d17ff3b099561e9",
+    "src/cpu060_patch.py": "62fddd2ec71561f393cfd0496f8b32b8652c47e48c0f858a33f5ac12069db512",
+    "src/intro/assets/picture.bin": "3689653758c5de01f5979f96ac2f71eb68da653c24b223e4acea37f9173a2248",
+    "src/intro/build_intro.py": "a671b6c37bc02dc7360cfe559fd0b8abef223076be2f5c44843febe5831f543c",
+    "src/intro/intro.s": "6da6c373b9be96a7b36817b53acbd9700a0f5e861f45cee9448841496424504c",
+    "src/pp20.py": "e82ae42497dbe61fd560289ffbcac01f23e65ef1e5b89f728dab22e8eb0c9b6f",
+    "src/span_fill.s": "d5109d22e9a347a19a1b7ac9928c1c3daafe67521fd4a20940d9308801a05602",
+    "src/terrain_delta.s": "29e97cef66a6fa0135c0fabb67ac560db50006518f5256118fad4d93c9a993d0",
+    "src/terrain_div.s": "5ca4eb31120f21dada514fbeabd5866fa0d852d97817ddeb45415a1a9b513f07",
+    "src/terrain_project.s": "06b03ee02f2649b5352e01af014a55b919cfae4f60250730be4095dfbfff5cbb",
+    "src/trapezoid_fill.s": "6394959450578b0a39e33502fce973dd4e61e0c3a223374018ec959d90a10908",
+    "src/view9.s": "e5d0eee7f89cce32b8040884e9a93d32910bdc33ca0a3d49dac883f2f46a61d7"
+  },
+  "output_name": "hunter-performance.adf"
+}
