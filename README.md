@@ -1,15 +1,18 @@
 # Hunter - 68060 Performance Patch
 
-**Version 1.0.1.** A 68060 performance patch for Hunter, with instruction-cache
+**Version 1.1.0.** A 68060 performance patch for Hunter, with instruction-cache
 support, Fast RAM data, terrain optimizations, optimized polygon filling,
 a 7 × 9 terrain view with about 33% greater object depth range, and safe cache
-handling before the intro picture.
+handling before the intro picture. The loader and its CPU buffers now use an
+Exec-allocated Fast RAM area with a bounded Chip RAM fallback, including support
+for Blizzard 1260 accelerator memory.
 
 ## Requirements
 
 - Python 3.9 or newer. No additional packages or assembler needed to patch a disk.
 - Your own Hunter ADF matching the [supported checksum](FS-UAE.md#checksums).
-- FS-UAE, Kickstart 3.1, a 68060, 2 MiB Chip RAM and 8 MiB Fast RAM.
+- FS-UAE, Kickstart 3.1, 2 MiB Chip RAM and a Blizzard 1260 with its boot ROM
+  and default 32 MiB accelerator memory. See the [configuration](FS-UAE.md).
 
 ## Usage
 

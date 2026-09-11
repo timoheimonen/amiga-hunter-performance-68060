@@ -18,7 +18,7 @@ def branch(source, target, opcode=0x6000):
     return word(opcode) + word(delta)
 
 
-def patch_cpu060(exe, output, unpack, fast_data=True, terrain_delta=True, terrain_div=True, terrain_project=True, span_fill=True, trapezoid_fill=True, view_9=True):
+def patch_cpu060(exe, output, unpack, fast_data=True, terrain_delta=True, terrain_div=True, terrain_project=True, span_fill=True, trapezoid_fill=True, view_9=True, fast_loader=True):
     if view_9 and not fast_data:
         raise ValueError("View 9 requires fast data")
     game = unpack(exe[0x92e8:])
@@ -128,7 +128,7 @@ def patch_cpu060(exe, output, unpack, fast_data=True, terrain_delta=True, terrai
         + '        dc.b ' + ','.join(f'${b:02X}' for b in data) + '\n'
         for address, data in view_records))
     binary, listing = output / 'cpu060.bin', output / 'cpu060.lst'
-    subprocess.run(['vasmm68k_mot', '-Fbin', f'-DFAST_DATA={int(fast_data)}',
+    subprocess.run(['vasmm68k_mot', '-Fbin', f'-DFAST_DATA={int(fast_data)}', f'-DFAST_LOADER={int(fast_loader)}',
                     f'-DTERRAIN_DELTA={int(terrain_delta)}', f'-DTERRAIN_DIV={int(terrain_div)}',
                     f'-DTERRAIN_PROJECT={int(terrain_project)}', f'-DSPAN_FILL={int(span_fill)}', f'-DTRAPEZOID_FILL={int(trapezoid_fill)}', f'-DVIEW_9={int(view_9)}', '-I'+str(output), '-I'+str(ROOT / 'src'), '-L', str(listing),
                     '-o', str(binary), str(ROOT / 'src/cpu060.s')], check=True,
@@ -151,6 +151,9 @@ def patch_cpu060(exe, output, unpack, fast_data=True, terrain_delta=True, terrai
         file_patch(offset, (0x3b1).to_bytes(4,'big'), (0x3b1+len(payload)//4).to_bytes(4,'big'))
     file_patch(0x4a, bytes.fromhex('4eaefdd8'), branch(0x4a,symbols['Bootstrap_OpenDos'],0x6100))
     file_patch(0x24a,bytes.fromhex('4ef900040700'),branch(0x24a,symbols['Bootstrap_Install'])+bytes.fromhex('4e71'))
+    if fast_loader:
+        file_patch(0x82, bytes.fromhex('2e3c52614d3f'),
+                   branch(0x82, symbols['Bootstrap_SelectLoader']) + bytes.fromhex('4e71'))
     # The only stream seek immediate moves with the extended HUNK.
     if result[0x110:0x116] != bytes.fromhex('243c00000ef8'):
         raise ValueError('Unexpected overlay seek')
@@ -163,7 +166,7 @@ def patch_cpu060(exe, output, unpack, fast_data=True, terrain_delta=True, terrai
     file_patch(0x222+0x150,bytes.fromhex('4cdf7fff'),branch(0x222,resident_return))
     if result[0xee8+len(payload):] != exe[0xee8:]:
         raise ValueError('Original intro/game streams changed')
-    return bytes(result), dict(view_9=view_9, view_patch_records=len(view_records), view_module_bytes=symbols['View9_End']-symbols['View9_Start'] if view_9 else 0,
+    return bytes(result), dict(fast_loader=fast_loader, loader_arena_bytes=0x14000 if fast_loader else 0, view_9=view_9, view_patch_records=len(view_records), view_module_bytes=symbols['View9_End']-symbols['View9_Start'] if view_9 else 0,
                               trapezoid_fill=trapezoid_fill, span_fill=span_fill, terrain_project=terrain_project, terrain_div=terrain_div, terrain_delta=terrain_delta, terrain_delta_bytes=512 if terrain_delta else 0,
                               fast_data=fast_data, fast_data_bytes=(0x18a00 + 0x1000*view_9) if fast_data else 0,
                               payload_bytes=len(payload),game_patches=len(records),

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 - 2026-09-11
+
+- Add a Blizzard 1260 configuration using the accelerator's default memory without separate Fast RAM settings.
+- Allocate 80 KiB through Exec for the loader, resident patches and CPU buffers, replacing fixed bootstrap RAM probes.
+- Fall back to a bounded Chip RAM allocation if Fast RAM is unavailable or unsuitable; keep disk DMA in Chip RAM.
+
 ## 1.0.1 - 2026-09-11
 
 - Disable the data cache through Exec's CacheControl service before opening the intro picture.

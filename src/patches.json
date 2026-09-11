@@ -1,11 +1,12 @@
 {
-  "version": "1.0.1",
+  "version": "1.1.0",
   "source_sha256": "913d8c7cd8bf9096000b81c02acc8d0d7d49440a2cd486c6e1b8a74d18412f21",
-  "output_sha256": "25279049d251c6f94fdb0ffa9b1b681b81274dc580bf1ca044578d4c16bbf439",
-  "delta_sha256": "d2eec61dafaa9a8bd0287705e0fc7f5efa1696a5d08814a60402a97728af79e1",
+  "output_sha256": "3e23f678192c0c73994462dadea483baec56b5a9baadd04ca1ac9db31cb896e0",
+  "delta_sha256": "6c4aaa68693fba89e4022d504f04a9a0a40cce94e659b08bde045d037480365e",
   "disk_bytes": 901120,
   "features": [
     "cpu060",
+    "fast_loader",
     "fast_data",
     "terrain_delta",
     "terrain_div",
@@ -16,8 +17,9 @@
     "custom_intro"
   ],
   "sources": {
-    "src/cpu060.s": "957bc8127fd12020f4614755509f036b3a30367d32ca6e55a19278b445845592",
-    "src/cpu060_patch.py": "62fddd2ec71561f393cfd0496f8b32b8652c47e48c0f858a33f5ac12069db512",
+    "src/cpu060.s": "aff090ea1fd1e38bbc2b1c0b96310a0c6440bc945cc26f8ce6073371d901732b",
+    "src/cpu060_patch.py": "8ab8b7063f0f6d2dcf8583d4f7bf05ffb2fbe5215e6dab2090a7d35712e2b084",
+    "src/fast_loader.s": "245444d7cb9fe124281fada4650ae33b64c67c9d60fe216205d3d2068a658062",
     "src/intro/assets/picture.bin": "3689653758c5de01f5979f96ac2f71eb68da653c24b223e4acea37f9173a2248",
     "src/intro/build_intro.py": "a671b6c37bc02dc7360cfe559fd0b8abef223076be2f5c44843febe5831f543c",
     "src/intro/intro.s": "b4cfa05ed11ba05ba17f4055c6094bc2ae20ec3bcba8a4e2d280df362aac1d11",

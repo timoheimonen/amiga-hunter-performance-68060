@@ -9,11 +9,18 @@ Bootstrap_OpenDos:
         moveq #0,D0
         move.l #$101,D1                ; CACRF_EnableI | CACRF_EnableD (Exec bits)
         jsr -648(A6)                   ; CacheControl: flush, then disable caches
+        ifne FAST_LOADER
+        bsr.w Bootstrap_AllocLoader
+        endif
         ifne FAST_DATA
         bsr.w Bootstrap_AllocFast
         endif
         movem.l (SP)+,D0-D7/A0-A6
         jmp -$228(A6)                  ; displaced OpenLibrary call
+
+        ifne FAST_LOADER
+        include "fast_loader.s"
+        endif
 
         ifne FAST_DATA
 ; Allocate before the intros take over. Reverse allocation avoids the fixed
