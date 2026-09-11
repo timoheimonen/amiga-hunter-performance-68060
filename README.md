@@ -1,4 +1,4 @@
-# Hunter — 68060 Performance Patch
+# Hunter - 68060 Performance Patch
 
 **Version 1.0.1.** A 68060 performance patch for Hunter, with instruction-cache
 support, Fast RAM data, terrain optimizations, optimized polygon filling,

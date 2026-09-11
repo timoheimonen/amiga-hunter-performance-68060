@@ -1,4 +1,4 @@
-# Patch details — 1.0.1
+# Patch details - 1.0.1
 
 - 68060 instruction-cache support.
 - Safe cache handling through Exec's `CacheControl` before the intro picture and original intros; the data cache stays disabled.

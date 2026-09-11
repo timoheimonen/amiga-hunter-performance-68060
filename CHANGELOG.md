@@ -1,12 +1,12 @@
 # Changelog
 
-## 1.0.1 — 2026-09-11
+## 1.0.1 - 2026-09-11
 
 - Disable the data cache through Exec's CacheControl service before opening the intro picture.
 - Replace direct bootstrap cache disabling with CacheControl so pending writes are handled before disabling caches, including direct game startup.
 - Check for Exec V39 or newer before the intro picture uses OS services.
 
-## 1.0.0 — 2026-09-10
+## 1.0.0 - 2026-09-10
 
 - Initial release of the Hunter 68060 performance patch.
 - Instruction-cache support, Fast RAM data, terrain and polygon-fill optimizations.
