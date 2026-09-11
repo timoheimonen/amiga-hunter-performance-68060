@@ -5,6 +5,13 @@ start:
         movem.l d0-d7/a0-a6,-(sp)
         lea start(pc),a5
         move.l 4.w,a6
+        cmpi.w #39,20(a6)       ; lib_Version: this picture requires V39 APIs
+        blo cleanup
+        ; Let Exec/CPU support flush dirty data before disabling the data cache.
+        ; CacheControl uses the Exec bit definitions, not the 68060 CACR layout.
+        moveq #0,d0
+        move.l #$100,d1         ; CACRF_EnableD; retain the instruction-cache state
+        jsr -648(a6)            ; CacheControl; leave D-cache off for the game
         lea intuition_name(pc),a1
         moveq #39,d0
         jsr -552(a6)

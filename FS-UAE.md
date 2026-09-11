@@ -37,4 +37,4 @@ identified below is supported.
 | Disk image | SHA-256 |
 | --- | --- |
 | Original Hunter ADF | `913d8c7cd8bf9096000b81c02acc8d0d7d49440a2cd486c6e1b8a74d18412f21` |
-| hunter-performance.adf 1.0.0 | `b7f49cabfb99b81f61b0907bf563f5db0d095c8bbc19a2378729239fac6d628c` |
+| hunter-performance.adf 1.0.1 | `25279049d251c6f94fdb0ffa9b1b681b81274dc580bf1ca044578d4c16bbf439` |

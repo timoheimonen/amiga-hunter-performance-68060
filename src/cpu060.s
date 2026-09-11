@@ -4,19 +4,16 @@
         org $EE8
 Bootstrap_OpenDos:
         movem.l D0-D7/A0-A6,-(SP)
+        ; Also cover --no-custom-intro and direct Hunt01.exe startup.
+        ; Exec/CPU support owns writeback and the global cache state transition.
+        moveq #0,D0
+        move.l #$101,D1                ; CACRF_EnableI | CACRF_EnableD (Exec bits)
+        jsr -648(A6)                   ; CacheControl: flush, then disable caches
         ifne FAST_DATA
         bsr.w Bootstrap_AllocFast
         endif
-        lea Bootstrap_CacheOff(PC),A5
-        jsr -30(A6)                    ; Exec Supervisor(callback in A5)
         movem.l (SP)+,D0-D7/A0-A6
         jmp -$228(A6)                  ; displaced OpenLibrary call
-Bootstrap_CacheOff:
-        movec CACR,D0
-        andi.l #$7FFF7FFF,D0            ; disable instruction AND data cache
-        movec D0,CACR
-        cinva IC                       ; also invalidate the 060 branch cache
-        rte
 
         ifne FAST_DATA
 ; Allocate before the intros take over. Reverse allocation avoids the fixed
@@ -158,7 +155,7 @@ Resident_Enable:
         move.l A0,$BC.w                ; private TRAP #15; VBR is zero in target
         cinva IC                       ; all copied/trainer-patched code is final
         movec CACR,D0
-        andi.l #$7FFF7FFF,D0
+        andi.l #$7FFF7FFF,D0            ; D-cache is already off since CacheControl
         ori.l #$8000,D0                ; EIC=1; preserve other controls; EDC=0
         movec D0,CACR
         movem.l (SP)+,D0/A0

@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "source_sha256": "913d8c7cd8bf9096000b81c02acc8d0d7d49440a2cd486c6e1b8a74d18412f21",
-  "output_sha256": "b7f49cabfb99b81f61b0907bf563f5db0d095c8bbc19a2378729239fac6d628c",
-  "delta_sha256": "b250292f4ee908d48564f96abe0f009718faf417ad5e9e94dca664342f28ce13",
+  "output_sha256": "25279049d251c6f94fdb0ffa9b1b681b81274dc580bf1ca044578d4c16bbf439",
+  "delta_sha256": "d2eec61dafaa9a8bd0287705e0fc7f5efa1696a5d08814a60402a97728af79e1",
   "disk_bytes": 901120,
   "features": [
     "cpu060",
@@ -16,11 +16,11 @@
     "custom_intro"
   ],
   "sources": {
-    "src/cpu060.s": "99fffe93a4e714c10c4ea39c1cc8528bbad8d7e8dd6aa4938d17ff3b099561e9",
+    "src/cpu060.s": "957bc8127fd12020f4614755509f036b3a30367d32ca6e55a19278b445845592",
     "src/cpu060_patch.py": "62fddd2ec71561f393cfd0496f8b32b8652c47e48c0f858a33f5ac12069db512",
     "src/intro/assets/picture.bin": "3689653758c5de01f5979f96ac2f71eb68da653c24b223e4acea37f9173a2248",
     "src/intro/build_intro.py": "a671b6c37bc02dc7360cfe559fd0b8abef223076be2f5c44843febe5831f543c",
-    "src/intro/intro.s": "6da6c373b9be96a7b36817b53acbd9700a0f5e861f45cee9448841496424504c",
+    "src/intro/intro.s": "b4cfa05ed11ba05ba17f4055c6094bc2ae20ec3bcba8a4e2d280df362aac1d11",
     "src/pp20.py": "e82ae42497dbe61fd560289ffbcac01f23e65ef1e5b89f728dab22e8eb0c9b6f",
     "src/span_fill.s": "d5109d22e9a347a19a1b7ac9928c1c3daafe67521fd4a20940d9308801a05602",
     "src/terrain_delta.s": "29e97cef66a6fa0135c0fabb67ac560db50006518f5256118fad4d93c9a993d0",

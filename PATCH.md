@@ -1,6 +1,7 @@
-# Patch details — 1.0.0
+# Patch details — 1.0.1
 
 - 68060 instruction-cache support.
+- Safe cache handling through Exec's `CacheControl` before the intro picture and original intros; the data cache stays disabled.
 - Replacement of the renderer's self-modifying calls.
 - A 104,960-byte Fast RAM area for object, terrain and trigonometric data and the expanded view module.
 - A 512-byte terrain delta table, exact constant divisions and perspective-result reuse.

@@ -1,8 +1,9 @@
 # Hunter — 68060 Performance Patch
 
-**Version 1.0.0.** A 68060 performance patch for Hunter, with instruction-cache
+**Version 1.0.1.** A 68060 performance patch for Hunter, with instruction-cache
 support, Fast RAM data, terrain optimizations, optimized polygon filling,
-a 7 × 9 terrain view with about 33% greater object depth range.
+a 7 × 9 terrain view with about 33% greater object depth range, and safe cache
+handling before the intro picture.
 
 ## Requirements
 
@@ -27,7 +28,7 @@ python3 patch.py --version
 
 Use `--force` to replace an existing output. The original disk is never
 overwritten. Boot the patched disk in DF0 with the [FS-UAE settings](FS-UAE.md).
-Press Space or click the mouse to continue from the title picture.
+Press Space or click the mouse to continue from the intro picture.
 
 [Patch details](PATCH.md) · [Changelog](CHANGELOG.md) · [Sources](src)
 
